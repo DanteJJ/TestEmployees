@@ -1,0 +1,48 @@
+﻿@using TestEmployees.Models
+@model EmployeeCLS
+
+@using(Html.BeginForm("AddEmployeed", "Home", FormMethod.Post, new { id = "frmEmployeed" }))
+{
+    <div class="alert alert-danger" id="AlertaUser" style="display:none">
+
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <b>Name</b>
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", id = "NombreNew", onchange="Limpiar()" })
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-12">
+            <b>Last Name</b>
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", id = "LastNew", onchange = "Limpiar()" })
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-12">
+            <b>RFC</b>
+            @Html.TextBoxFor(m => m.RFC, new { @class = "form-control", maxlength = "13", onchange = "validarRFC()", id = "rfcEm"  })
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-12">
+            <b>Born date</b>
+            <input type="date" class="form-control" name="BornDate" id="FechaNacim" max="@DateTime.Now.AddYears(-18).ToString("yyyy-MM-dd")", onchange="Limpiar()" />
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-12">
+            <b>Status</b>
+            <select class="form-control" name="StatusDes" id="StatusDes" , onchange="Limpiar()">
+                @foreach (var item in Enum.GetValues(typeof(EmployeeStatus)))
+                {
+                 <option value="@item"> @item </option>
+                }
+            </select>
+        </div>
+    </div>
+}
