@@ -16,6 +16,8 @@ namespace TestEmployees.Controllers
         }
         string cadena = "data source =admedic.chczlyjjs6gc.us-east-1.rds.amazonaws.com; initial catalog =PruebasCurso;User ID=imadmin;Password=impass_2021; integrated security = False";
         PruebasCursoEntities db;
+
+        //Using Linq for obtain data
         public ActionResult Index(string Name)
         {
             List<EmployeeCLS> emp = new List<EmployeeCLS>();
